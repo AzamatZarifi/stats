@@ -3,7 +3,7 @@ package stats
 import (
 	"fmt"
 
-	"github.com/AzamatZarifi/bank/pkg/bank/types"
+	"github.com/AzamatZarifi/bank/v2/pkg/bank/types"
 )
 
 func ExampleAvg_positive() {
