@@ -59,3 +59,28 @@ func TestFilterByCategory_oneFound(t *testing.T) {
 		t.Errorf("Invalid result: ecpected %v, actual %v", expected, result)
 	}
 }
+
+//Автотести к CategoriesTotal
+
+func TestCategoriesTotal(t *testing.T) {
+	payments := []types.Payment{
+		{Id: 1, Category: "auto", Amount: 2_000_00},
+		{Id: 2, Category: "food", Amount: 4_000_00},
+		{Id: 3, Category: "auto", Amount: 5_000_00},
+		{Id: 4, Category: "restaurant", Amount: 9_000_00},
+		{Id: 5, Category: "auto", Amount: 1_000_00},
+		{Id: 6, Category: "food", Amount: 3_000_00},
+		{Id: 7, Category: "food", Amount: 6_000_00},
+	}
+	expected := map[types.Category]types.Money{
+		"auto":       8_000_00,
+		"food":       13_000_00,
+		"restaurant": 9_000_00,
+	}
+
+	result := CategoriesTotal(payments)
+
+	if !reflect.DeepEqual(expected, result) {
+		t.Errorf("Ivalid test: expected %v, actual %v", expected, result)
+	}
+}
